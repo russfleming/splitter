@@ -16,10 +16,10 @@ export class AppComponent implements OnInit {
     this.customers = [
       {
         id: 1255,
-        name: "James McAdams",
-        country: "US",
-        company: "McAdams Consulting Ltd",
-        representative: "Ioni Bowcher"
+        name: 'James McAdams',
+        country: 'US',
+        company: 'McAdams Consulting Ltd',
+        representative: 'Ioni Bowcher'
       }
     ];
 
@@ -30,17 +30,17 @@ export class AppComponent implements OnInit {
       this.customers.forEach((item: any) => temp.push(item));
       temp.push({
         id: 1255 + index,
-        name: "Inserted row " + index,
-        country: "US",
-        company: "McAdams Consulting Ltd",
-        representative: "Ioni Bowcher"
+        name: 'Inserted row ' + index,
+        country: 'US',
+        company: 'McAdams Consulting Ltd',
+        representative: 'Ioni Bowcher'
       });
       this.customers = [...temp];
       index++;
       if (index > 50) {
         clearInterval(id);
       }
-    }, 1000);
+    }, 1500);
   }
 
   showDialog() {
