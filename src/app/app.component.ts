@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'splitter';
   customers: any[];
+  dialogVisible: boolean;
 
   constructor() { }
 
@@ -16,35 +17,33 @@ export class AppComponent implements OnInit {
       {
         id: 1255,
         name: "James McAdams",
-        country: {
-          name: "United States",
-          code: "us"
-        },
+        country: "US",
         company: "McAdams Consulting Ltd",
-        date: "2014-02-13",
-        status: "qualified",
-        activity: 23,
-        representative: {
-          name: "Ioni Bowcher",
-          image: "ionibowcher.png"
-        }
-      },
-      {
-        id: 5135,
-        name: "Geraldine Bisset",
-        country: {
-          name: "France",
-          code: "fr"
-        },
-        company: "Bisset Group",
-        status: "proposal",
-        date: "2019-05-05",
-        activity: 0,
-        representative: {
-          name: "Amy Elsner",
-          image: "amyelsner.png"
-        }
+        representative: "Ioni Bowcher"
       }
     ];
+
+    let index = 1;
+
+    const id = setInterval(() => {
+      const temp: any[] = [];
+      this.customers.forEach((item: any) => temp.push(item));
+      temp.push({
+        id: 1255 + index,
+        name: "Inserted row " + index,
+        country: "US",
+        company: "McAdams Consulting Ltd",
+        representative: "Ioni Bowcher"
+      });
+      this.customers = [...temp];
+      index++;
+      if (index > 50) {
+        clearInterval(id);
+      }
+    }, 1000);
+  }
+
+  showDialog() {
+    this.dialogVisible = true;
   }
 }
