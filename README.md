@@ -1,27 +1,18 @@
 # Splitter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.2.
+A demo Angular 11 and PrimeNG 11 application that shows an unexpected behaviour when putting a table with
+scrollHeight="flex" into a splitter panel.  This project has a splitter with two vertical panels.  The table is at the bottom and is intended for showing log events as the server generates them.  The upper panel is for doing other stuff.
 
-## Development server
+## Expectations
+
+The expectation is that the splitter panel sizes do not change automatically as the lower panel table grows in number of rows.  It should just grow to the splitter panel height and not more.
+
+## Problem Seen
+
+The problem is that as rows are added to the table, and when the table fills the original splitter panel height, it forces the splitter panel up and crowds out the upper panel.  Also, the table grows down outside the height of the lower splitter panel.
+
+## Run the Development server to try it out
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+There is a timer that fills the table, showing the unintended behaviour.
