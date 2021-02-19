@@ -1,39 +1,41 @@
 <p-tabView>
   <p-tabPanel header="Splitter Being Overrun">
-    <p-splitter [style]="{'height': '600px'}" styleClass="p-mb-5" layout="vertical">
+    <p-splitter [style]="{'height': '600px'}" [minSizes]="[30,0]" styleClass="p-mb-5" layout="vertical">
 
       <ng-template>
         Vertical splitter with a growing table in the bottom pane.
         <br />
-        As the table rows grow, the splitter automatically resizes and crowds out upper pane.  The table also grows down past the lower splitter container.
+        As the table rows grow, the splitter automatically resizes and crowds out upper pane. The table also grows down
+        past the lower splitter container.
         <br />
-        Question: How to constrain the table to be in the lower splitter pane without it resizing the splitter automatically?
+        Question: How to constrain the table to be in the lower splitter pane without it resizing the splitter
+        automatically?
       </ng-template>
 
       <ng-template>
-        <div class="p-col p-d-flex p-ai-center p-jc-center">
-          <div class="p-col p-d-flex p-ai-center p-jc-center">
-            <div style="padding: 10px">Example table with flex scrollHeight (https://www.primefaces.org/primeng/showcase/#/table/scroll)</div>
-            <p-table [value]="customers" [scrollable]="true" scrollHeight="flex">
-              <ng-template pTemplate="header">
-                <tr>
-                  <th>Name</th>
-                  <th>Country</th>
-                  <th>Company</th>
-                  <th>Representative</th>
-                </tr>
-              </ng-template>
-              <ng-template pTemplate="body" let-customer>
-                <tr>
-                  <td>{{customer.name}}</td>
-                  <td>{{customer.country}}</td>
-                  <td>{{customer.company}}</td>
-                  <td>{{customer.representative}}</td>
-                </tr>
-              </ng-template>
-            </p-table>
-          </div>
-        </div>
+        <app-growing-table></app-growing-table>
+        <!-- <div class="p-col p-d-flex p-ai-center p-jc-center">
+          <div style="padding: 10px">Example table with flex scrollHeight
+            (https://www.primefaces.org/primeng/showcase/#/table/scroll)</div>
+          <p-table [value]="customers" [scrollable]="true">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Company</th>
+                <th>Representative</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer>
+              <tr>
+                <td>{{customer.name}}</td>
+                <td>{{customer.country}}</td>
+                <td>{{customer.company}}</td>
+                <td>{{customer.representative}}</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div> -->
       </ng-template>
 
     </p-splitter>
@@ -78,5 +80,35 @@
         </ng-template>
       </p-dialog>
     </div>
+  </p-tabPanel>
+
+  <p-tabPanel header="Angular Split">
+    <!-- <horizontal-ninja primary-minsize="450" secondary-minsize="500" [primary-component-toggle]="false"
+      [secondary-component-toggle]="condition" local-storage-key="ninja" primary-component-initialratio="0.8"
+      [separator-width-px]="15">
+
+      <div class="ninja-content-primary">
+        <span>
+          Upper pane
+        </span>
+      </div>
+
+      <div class="ninja-content-secondary">
+        <app-growing-table></app-growing-table>
+      </div>
+
+    </horizontal-ninja> -->
+
+    <div style="width: 900px; height: 900px">
+      <as-split direction="vertical">
+        <as-split-area [size]="40">
+          <p>Top</p>
+        </as-split-area>
+        <as-split-area [size]="60">
+          <app-growing-table></app-growing-table>
+        </as-split-area>
+      </as-split>
+    </div>
+
   </p-tabPanel>
 </p-tabView>

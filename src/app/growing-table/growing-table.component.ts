@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-growing-table',
+  templateUrl: './growing-table.component.html',
+  styleUrls: ['./growing-table.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'splitter';
+export class GrowingTableComponent implements OnInit {
   customers: any[];
-  dialogVisible: boolean;
-  condition;
 
   constructor() { }
 
@@ -44,7 +41,4 @@ export class AppComponent implements OnInit {
     }, 1500);
   }
 
-  showDialog() {
-    this.dialogVisible = true;
-  }
 }

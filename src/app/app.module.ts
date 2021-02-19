@@ -7,18 +7,25 @@ import { SplitterModule } from 'primeng/splitter';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { AppComponent } from './app.component';
+import { NinjaSplitterModule } from 'ninja-splitter';
+import { GrowingTableComponent } from './growing-table/growing-table.component';
+import { AngularSplitModule } from 'angular-split';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GrowingTableComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ButtonModule,
     DialogModule,
+    NinjaSplitterModule,
     SplitterModule,
     TabViewModule,
     TableModule,
+    AngularSplitModule
   ],
   providers: [],
   bootstrap: [AppComponent]
